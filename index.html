@@ -20,16 +20,29 @@
 
   <script>
     function updateTime() {
-      var currentTime = new Date();
-      var hours = currentTime.getHours();
-      var minutes = currentTime.getMinutes();
-      var seconds = currentTime.getSeconds();
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', 'https://worldtimeapi.org/api/timezone/Asia/Ho_Chi_Minh', true);
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          var response = JSON.parse(xhr.responseText);
+          var datetime = response.datetime;
 
-      var formattedTime = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0');
+          // Chuyển đổi định dạng thời gian từ ISO 8601 thành định dạng hh:mm:ss
+          var currentTime = new Date(datetime);
+          var hours = currentTime.getHours();
+          var minutes = currentTime.getMinutes();
+          var seconds = currentTime.getSeconds();
 
-      document.getElementById("real-time").innerHTML = formattedTime;
+          var formattedTime = hours.toString().padStart(2, '0') + ":" + minutes.toString().padStart(2, '0') + ":" + seconds.toString().padStart(2, '0');
+
+          // Cập nhật nội dung của phần tử có id "real-time" với thời gian mới
+          document.getElementById("real-time").innerHTML = formattedTime;
+        }
+      };
+      xhr.send();
     }
 
+    // Cập nhật thời gian mỗi giây
     setInterval(updateTime, 1000);
   </script>
 </body>
