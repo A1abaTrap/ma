@@ -1,0 +1,14 @@
+{
+  "name": "realtime-app",
+  "version": "1.0.0",
+  "description": "Realtime Clock App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^12.0.0"
+  }
+}
