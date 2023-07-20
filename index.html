@@ -154,6 +154,41 @@
       cursor: pointer;
       font-size: 16px;
     }
+       /* Media query for tablet and larger screens */
+  @media (min-width: 768px) {
+    .chat-log {
+      max-height: 400px;
+    }
+
+    .user-input-container {
+      max-width: 600px;
+    }
+
+    .user-input {
+      font-size: 18px;
+    }
+  }
+
+  /* Media query for mobile phones */
+  @media (max-width: 480px) {
+    .chat-log {
+      max-height: 50vh;
+    }
+
+    .user-input-container {
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .user-input {
+      margin-bottom: 10px;
+      width: 100%;
+    }
+
+    .send-button {
+      width: 100%;
+    }
+  }
   </style>
 </head>
 <body>
